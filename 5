@@ -1,0 +1,868 @@
+#include <stdio.h>
+int main()
+{
+  int arr[10] = { 10,20,30,40,50 };
+  int count = 5;
+
+  int delIndex = 1;
+  for(int i = delIndex; i < count -1 ; ++i)
+    arr[i] = arr[i+1];
+  --count;
+
+  for (int i = 0; i < count; ++i)
+    printf("[%d] : %d\n", i, arr[i]);
+}
+
+#include <stdio.h>
+int main()
+{
+  int arr[10] = { 10,20,30,40,50 };
+  int count = 5;
+
+  int delIndex = 1;
+  arr[1] = arr[2];
+  arr[2] = arr[3];
+  arr[3] = arr[4];
+  --count;
+
+  for (int i = 0; i < count; ++i)
+    printf("[%d] : %d\n", i, arr[i]);
+}
+
+#include <stdio.h>
+int main()
+{
+  int arr[10] = { 10,20,30,40,50 };
+  int count = 5;
+
+  int delIndex = 1;
+  arr[delIndex] = arr[count-1];
+  --count;
+
+  for (int i = 0; i < count; ++i)
+    printf("[%d] : %d\n", i, arr[i]);
+}
+
+#include <stdio.h>
+int main()
+{
+  int arr[10] = { 10,20,30,40,50 };
+  int count = 5;
+
+  for (int i = 0; i < count; ++i)
+    printf("[%d] : %d\n", i, arr[i]);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
+struct StringArray
+{
+  char* s[100];
+  int count = 0;
+};
+void FreeStringArray(StringArray* psa)
+{
+  for (int i = 0; i < psa->count; ++i)
+    free(psa->s[i]);
+}
+void PrintStringArray(StringArray* psa)
+{
+  for (int i = 0; i < psa->count; ++i)
+    printf("string[%d] : %s\n", i, psa->s[i]);
+}
+void InputBuffer(char* buf, int size)
+{
+  printf("문자열 입력:");
+  gets_s(buf, size);
+}
+int IsExit(const char* buf)
+{
+  return strcmp("exit", buf) == 0;
+}
+void AddStringArray(StringArray* psa, const char* buf)
+{
+  psa->s[psa->count] = (char*)malloc(strlen(buf) + 1);
+  strcpy(psa->s[psa->count], buf);
+  ++psa->count;
+}
+void PrintMenu()
+{
+  printf("1. 문자열 입력\n");
+  printf("2. 문자열 출력\n");
+  printf("3. 문자열 검색\n");
+  printf("4. 문자열 삭제\n");
+  printf("0. 프로그램 종료\n");
+  printf("\n");
+}
+int main()
+{
+  StringArray sa = { 0 };
+  int run = 1;
+
+  while (run)
+  {
+    PrintMenu();
+    switch (_getch())
+    {
+    case '1':
+    {
+      char buf[500];
+      InputBuffer(buf, 500);
+      AddStringArray(&sa, buf);
+    }
+      break;
+    case '2':
+      PrintStringArray(&sa);
+      break;
+    case '3':
+    {
+      char buf[500];
+      printf("검색 ");
+      InputBuffer(buf, 500);
+      for (int i = 0; i < sa.count; ++i)
+      {
+        if (strcmp(sa.s[i], buf) == 0)
+        {
+          printf("찾은 문자열의 index : %d\n", i);
+          break;
+        }
+      }
+
+    }
+      break;
+    case '0':
+      run = 0;
+      break;
+    }
+  }
+
+  FreeStringArray(&sa);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
+struct StringArray
+{
+  char* s[100];
+  int count = 0;
+};
+void FreeStringArray(StringArray* psa)
+{
+  for (int i = 0; i < psa->count; ++i)
+    free(psa->s[i]);
+}
+void PrintStringArray(StringArray* psa)
+{
+  for (int i = 0; i < psa->count; ++i)
+    printf("string[%d] : %s\n", i, psa->s[i]);
+}
+void InputBuffer(char* buf, int size)
+{
+  printf("문자열 입력:");
+  gets_s(buf, size);
+}
+int IsExit(const char* buf)
+{
+  return strcmp("exit", buf) == 0;
+}
+void AddStringArray(StringArray* psa, const char* buf)
+{
+  psa->s[psa->count] = (char*)malloc(strlen(buf) + 1);
+  strcpy(psa->s[psa->count], buf);
+  ++psa->count;
+}
+void PrintMenu()
+{
+  printf("1. 문자열 입력\n");
+  printf("2. 문자열 출력\n");
+  printf("3. 문자열 검색\n");
+  printf("4. 문자열 삭제\n");
+  printf("0. 프로그램 종료\n");
+  printf("\n");
+}
+int main()
+{
+  StringArray sa = { 0 };
+  int run = 1;
+
+  while (run)
+  {
+    PrintMenu();
+    switch (_getch())
+    {
+    case '1':
+      AddStringArray(&sa, "abc");
+      break;
+    case '2':
+      PrintStringArray(&sa);
+      break;
+    case '0':
+      run = 0;
+      break;
+    }
+    //char buf[1000];
+    //InputBuffer(buf, 1000);
+    //if (IsExit(buf))
+    //  run = 0;
+    //else
+    //  AddStringArray(&sa, buf);
+  }
+
+  //PrintStringArray(&sa);
+
+  FreeStringArray(&sa);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
+struct StringArray
+{
+  char* s[100];
+  int count = 0;
+};
+void FreeStringArray(StringArray* psa)
+{
+  for (int i = 0; i < psa->count; ++i)
+    free(psa->s[i]);
+}
+void PrintStringArray(StringArray* psa)
+{
+  for (int i = 0; i < psa->count; ++i)
+    printf("string[%d] : %s\n", i, psa->s[i]);
+}
+void InputBuffer(char* buf, int size)
+{
+  printf("문자열 입력:");
+  gets_s(buf, size);
+}
+int IsExit(const char* buf)
+{
+  return strcmp("exit", buf) == 0;
+}
+void AddStringArray(StringArray* psa, const char* buf)
+{
+  psa->s[psa->count] = (char*)malloc(strlen(buf) + 1);
+  strcpy(psa->s[psa->count], buf);
+  ++psa->count;
+}
+void PrintMenu()
+{
+  printf("1. 문자열 입력\n");
+  printf("2. 문자열 출력\n");
+  printf("3. 문자열 검색\n");
+  printf("4. 문자열 삭제\n");
+  printf("0. 프로그램 종료\n");
+  printf("\n");
+}
+int main()
+{
+  StringArray sa = { 0 };
+  int run = 1;
+
+  while (run)
+  {
+    PrintMenu();
+    switch (_getch())
+    {
+    case '1':
+      break;
+    case '0':
+      run = 0;
+      break;
+    }
+    //char buf[1000];
+    //InputBuffer(buf, 1000);
+    //if (IsExit(buf))
+    //  run = 0;
+    //else
+    //  AddStringArray(&sa, buf);
+  }
+
+  //PrintStringArray(&sa);
+
+  FreeStringArray(&sa);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct StringArray
+{
+  char* s[100];
+  int count = 0;
+};
+void FreeStringArray(StringArray* psa)
+{
+  for (int i = 0; i < psa->count; ++i)
+    free(psa->s[i]);
+}
+void PrintStringArray(StringArray* psa)
+{
+  for (int i = 0; i < psa->count; ++i)
+    printf("string[%d] : %s\n", i, psa->s[i]);
+}
+void InputBuffer(char* buf, int size)
+{
+  printf("문자열 입력:");
+  gets_s(buf, size);
+}
+int IsExit(const char* buf)
+{
+  return strcmp("exit", buf) == 0;
+}
+void AddStringArray(StringArray* psa, const char* buf)
+{
+  psa->s[psa->count] = (char*)malloc(strlen(buf) + 1);
+  strcpy(psa->s[psa->count], buf);
+  ++psa->count;
+}
+int main()
+{
+  StringArray sa = { 0 };
+  int run = 1;
+
+  while (run)
+  {
+    char buf[1000];
+    InputBuffer(buf, 1000);
+    if (IsExit(buf))
+      run = 0;
+    else
+      AddStringArray(&sa, buf);
+  }
+  
+  PrintStringArray(&sa);
+
+  FreeStringArray(&sa);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct StringArray
+{
+  char* s[100];
+  int count = 0;
+};
+void FreeStringArray(StringArray* psa)
+{
+  for (int i = 0; i < psa->count; ++i)
+    free(psa->s[i]);
+}
+void PrintStringArray(StringArray* psa)
+{
+  for (int i = 0; i < psa->count; ++i)
+    printf("string[%d] : %s\n", i, psa->s[i]);
+}
+void InputBuffer(char* buf, int size)
+{
+  printf("문자열 입력:");
+  gets_s(buf, size);
+}
+int IsExit(const char* buf)
+{
+  return strcmp("exit", buf) == 0;
+}
+void AddStringArray(StringArray* psa, const char* buf)
+{
+  psa->s[psa->count] = (char*)malloc(strlen(buf) + 1);
+  strcpy(psa->s[psa->count], buf);
+  ++psa->count;
+}
+int main()
+{
+  StringArray sa = { 0 };
+
+  int run = 1;
+
+  while (run)
+  {
+    char buf[1000];
+    InputBuffer(buf, 1000);
+    if ( IsExit(buf) )
+      run = 0;
+    else
+    {
+      AddStringArray(&sa, buf);
+    }
+  }
+
+  PrintStringArray(&sa);
+  PrintStringArray(&sa);
+  PrintStringArray(&sa);
+
+  FreeStringArray(&sa);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct StringArray
+{
+  char* s[100];
+  int count = 0;
+};
+void FreeStringArray(StringArray* psa)
+{
+  for (int i = 0; i < psa->count; ++i)
+    free(psa->s[i]);
+}
+void PrintStringArray(StringArray* psa)
+{
+  for (int i = 0; i < psa->count; ++i)
+    printf("string[%d] : %s\n", i, psa->s[i]);
+}
+int main()
+{
+  StringArray sa = { 0 };
+
+  int run = 1;
+
+  while (run)
+  {
+    char buf[1000];
+    printf("문자열 입력:");
+    gets_s(buf, 1000);
+    if (strcmp("exit", buf) == 0)
+      run = 0;
+    else
+    {
+      sa.s[sa.count] = (char*)malloc(strlen(buf) + 1);
+      strcpy(sa.s[sa.count], buf);
+      ++sa.count;
+    }
+  }
+
+  PrintStringArray(&sa);
+  PrintStringArray(&sa);
+  PrintStringArray(&sa);
+
+  FreeStringArray(&sa);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct StringArray
+{
+  char* s[100];
+  int count = 0;
+};
+int main()
+{
+  StringArray sa = { 0 };
+
+  int run = 1;
+
+  while (run)
+  {
+    char buf[1000];
+    printf("문자열 입력:");
+    gets_s(buf, 1000);
+    if (strcmp("exit", buf) == 0)
+      run = 0;
+    else
+    {
+      sa.s[sa.count] = (char*)malloc(strlen(buf) + 1);
+      strcpy(sa.s[sa.count], buf);
+      ++sa.count;
+    }
+  }
+
+  for (int i = 0; i < sa.count; ++i)
+    printf("string[%d] : %s\n", i, sa.s[i]);
+
+  for (int i = 0; i < sa.count; ++i)
+    free(sa.s[i]);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct StringArray
+{
+  char* s[100];
+  int count = 0;
+};
+int main()
+{
+  StringArray sa = {0};
+  
+  int run = 1;
+
+  while (run)
+  {
+    char buf[1000];
+    printf("문자열 입력:");
+    gets_s(buf, 1000);
+    if (strcmp("exit", buf) == 0)
+      run = 0;
+    else
+    {
+      sa.s[sa.count] = (char*)malloc(strlen(buf) + 1);
+      strcpy(sa.s[sa.count], buf);
+      ++sa.count;
+    }
+  }
+
+  for (int i = 0; i < sa.count; ++i)
+    printf("string[%d] : %s\n", i, sa.s[i]);
+
+  for (int i = 0; i < sa.count; ++i)
+    free(sa.s[i]);
+}
+
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+  char* s[100] = { NULL };
+  int count = 0;
+  int run = 1;
+
+  while( run )
+  {
+    char buf[1000];
+    printf("문자열 입력:");
+    gets_s(buf, 1000);
+    if (strcmp("exit", buf) == 0)
+      run = 0;
+    else
+    {
+      s[count] = (char*)malloc(strlen(buf) + 1);
+      strcpy(s[count], buf);
+      ++count;
+    }
+  }
+
+  for (int i = 0; i < count; ++i)
+    printf("string[%d] : %s\n", i, s[i]);
+
+  for (int i = 0; i < count; ++i)
+    free(s[i]);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+  char* s[100] = { NULL };
+  int count = 0;
+
+  for ( ; ; )
+  {
+    char buf[1000];
+    printf("문자열 입력:");
+    gets_s(buf, 1000);
+    if (strcmp("exit", buf) == 0)
+      break;
+
+    s[count] = (char*)malloc(strlen(buf) + 1);
+    strcpy(s[count], buf);
+    ++count;
+  }
+
+  for (int i = 0; i < count; ++i)
+    printf("string[%d] : %s\n", i, s[i]);
+
+  for (int i = 0; i < count; ++i)
+    free(s[i]);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+  char* s[100] = { NULL };
+  int count = 0;
+
+  for (int i = 0; i < 3; ++i)
+  {
+    char buf[1000];
+    printf("문자열 입력:");
+    gets_s(buf, 1000);
+    s[count] = (char*)malloc(strlen(buf) + 1);
+    strcpy(s[count], buf);
+    ++count;
+  }
+
+  for (int i = 0; i < count; ++i)
+    printf("string[%d] : %s\n", i, s[i]);
+
+  for (int i = 0; i < count; ++i)
+    free(s[i]);
+}
+
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+  char* s[100] = { NULL };
+  int count = 0;
+
+  char buf[1000];
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[count] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[count], buf);
+  ++count;
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[count] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[count], buf);
+  ++count;
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[count] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[count], buf);
+  ++count;
+
+  for (int i = 0; i < count; ++i)
+    printf("string[%d] : %s\n", i, s[i]);
+
+  for (int i = 0; i < count; ++i)
+    free(s[i]);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+  char* s[100] = { NULL };
+  int count = 0;
+
+  char buf[1000];
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[0] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[0], buf);
+  ++count;
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[1] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[1], buf);
+  ++count;
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[2] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[2], buf);
+  ++count;
+
+  for(int i = 0 ; i < count ;++i)
+    printf("string[%d] : %s\n", i, s[i]);
+
+  for (int i = 0; i < count; ++i)
+    free(s[i]);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+  char* s[100] = { NULL };
+
+  char buf[1000];
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[0] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[0], buf);
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[1] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[1], buf);
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[2] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[2], buf);
+
+  printf("string : %s\n", s[0]);
+  printf("string : %s\n", s[1]);
+  printf("string : %s\n", s[2]);
+
+  free(s[0]);
+  free(s[1]);
+  free(s[2]);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+  //char* s1;
+  //char* s2;
+  char* s[2] = { NULL };
+
+  char buf[1000];
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[0] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[0], buf);
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[1] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[1], buf);
+
+  printf("string : %s\n", s[0]);
+  printf("string : %s\n", s[1]);
+
+  free(s[0]);
+  free(s[1]);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+  //char* s1;
+  //char* s2;
+  char* s[2] = { NULL };
+
+  char buf[1000];
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[0] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[0], buf);
+
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  s[1] = (char*)malloc(strlen(buf) + 1);
+  strcpy(s[1], buf);
+
+  printf("string : %s\n", s[0]);
+  printf("string : %s\n", s[1]);
+
+  free(s[0]);
+  free(s[1]);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+  // 1. 문자열을 입력 받아
+  char buf[1000];
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  // 2. 힙메모리 생성하고 문자열 복사
+  char* s1 = NULL;
+  s1 = (char*)malloc(strlen(buf) + 1);
+  strcpy(s1, buf);
+
+  // 3. 문자열을 출력
+  printf("string : %s\n", s1);
+  // 4. 힙메모리 삭제
+  free(s1);
+}
+
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+  // 1. 문자열을 입력 받아
+  char buf[1000];
+  printf("문자열 입력:");
+  gets_s(buf, 1000);
+  // 2. 힙메모리 생성하고 문자열 복사
+  char* s = NULL;
+  s = (char*)malloc(strlen(buf) + 1);
+  strcpy(s, buf);
+
+  // 3. 문자열을 출력
+  printf("string : %s\n", s);
+  // 4. 힙메모리 삭제
+  free(s);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+  // 1. 문자열을 입력 받아
+  char buf[1000];
+  gets_s(buf, 1000);
+  // 2. 힙메모리 생성하고 문자열 복사
+  char* s = NULL;
+  s = (char*)malloc( strlen(buf)+1 );
+  s[0] = buf[0];
+  s[1] = buf[1];
+  s[2] = buf[2];
+  s[3] = buf[3];
+  s[4] = buf[4];
+  s[5] = buf[5];
+  // 3. 문자열을 출력
+  printf("string : %s\n", buf);
+  printf("string : %s\n", s);
+  // 4. 힙메모리 삭제
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+  // 1. 문자열을 입력 받아
+  char buf[1000];
+  gets_s(buf, 1000);
+  // 2. 힙메모리 생성하고 문자열 복사
+  char* s = NULL;
+  s = (char*)malloc(6);
+  s[0] = buf[0];
+  s[1] = buf[1];
+  s[2] = buf[2];
+  s[3] = buf[3];
+  s[4] = buf[4];
+  s[5] = buf[5];
+  // 3. 문자열을 출력
+  printf("string : %s\n", buf);
+  printf("string : %s\n", s);
+  // 4. 힙메모리 삭제
+}
