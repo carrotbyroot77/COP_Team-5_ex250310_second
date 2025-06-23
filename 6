@@ -1,0 +1,514 @@
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("mydata.txt", "wb");
+  {//header
+    int dataLen = 5;
+    fwrite(&dataLen, sizeof(int), 1, fp);
+  }
+  {
+    char type = 'I';
+    int data = 100;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&data, sizeof(int), 1, fp);
+  } 
+  {
+    char type = 'I';
+    int data = 200;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&data, sizeof(int), 1, fp);
+  }
+  {
+    char type = 'D';
+    double data = 3.1415;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&data, sizeof(double), 1, fp);
+  }
+  {
+    char type = 'S';
+    const char* data = "Hello";
+    int slen = strlen(data) + 1;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&slen, sizeof(int), 1, fp);
+    fwrite(data, slen, 1, fp);
+  }
+  {
+    char type = 'S';
+    const char* data = "hong";
+    int slen = strlen(data) + 1;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&slen, sizeof(int), 1, fp);
+    fwrite(data, slen, 1, fp);
+  }
+  fclose(fp);
+  //////////////////////////////////////////
+
+  fp = fopen("mydata.txt", "rb");
+  int dataLen = 0;
+  { // read header
+    fread(&dataLen, sizeof(int), 1, fp);
+  }
+  for (int i = 0; i < dataLen; ++i)
+  {
+    char type = 0;
+    fread(&type, sizeof(char), 1, fp);
+    switch (type)
+    {
+    case 'I':
+    {
+      int data = 0;
+      fread(&data, sizeof(int), 1, fp);
+      printf("int : %d\n", data);
+    }
+    break;
+    case 'D':
+    {
+      double data = 0;
+      fread(&data, sizeof(double), 1, fp);
+      printf("double : %g\n", data);
+    }
+    break;
+    case 'S':
+    {
+      char buf[1024] = { 0 };
+      int slen = 0;
+      fread(&slen, sizeof(int), 1, fp);
+      fread(buf, slen, 1, fp);
+      printf("string : %s\n", buf);
+    }
+    break;
+    }
+  }
+  fclose(fp);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("mydata.txt", "wb");
+  {//header
+    int dataLen = 3;
+    fwrite(&dataLen, sizeof(int), 1, fp);
+  }
+  {
+    char type = 'I';
+    int data = 100;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&data, sizeof(int), 1, fp);
+  }
+  {
+    char type = 'D';
+    double data = 3.1415;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&data, sizeof(double), 1, fp);
+  }
+  {
+    char type = 'S';
+    const char* data = "Hello";
+    int slen = strlen(data) + 1;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&slen, sizeof(int), 1, fp);
+    fwrite(data, slen, 1, fp);
+  }
+  fclose(fp);
+  ////////////////////////////////////////////
+
+  fp = fopen("mydata.txt", "rb");
+  int dataLen = 0;
+  { // read header
+    fread(&dataLen, sizeof(int), 1, fp);
+  }
+  for (int i = 0; i < dataLen; ++i)
+  {
+    char type = 0;
+    fread(&type, sizeof(char), 1, fp);
+    switch (type)
+    {
+    case 'I':
+    {
+      int data = 0;
+      fread(&data, sizeof(int), 1, fp);
+      printf("int : %d\n", data);
+    }
+    break;
+    case 'D':
+    {
+      double data = 0;
+      fread(&data, sizeof(double), 1, fp);
+      printf("double : %g\n", data);
+    }
+    break;
+    case 'S':
+    {
+      char buf[1024] = { 0 };
+      int slen = 0;
+      fread(&slen, sizeof(int), 1, fp);
+      fread(buf, slen, 1, fp);
+      printf("string : %s\n", buf);
+    }
+    break;
+    }
+  }
+  fclose(fp);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("mydata.txt", "wb");
+  {
+    char type = 'I';
+    int data = 100;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&data, sizeof(int), 1, fp);
+  }
+  {
+    char type = 'D';
+    double data = 3.1415;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&data, sizeof(double), 1, fp);
+  }
+  {
+    char type = 'S';
+    const char* data = "Hello";
+    int slen = strlen(data) + 1;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&slen, sizeof(int), 1, fp);
+    fwrite(data, slen, 1, fp);
+  }
+  fclose(fp);
+
+  fp = fopen("mydata.txt", "rb");
+  for(int i = 0 ; i < 3 ; ++i)
+  {
+    char type = 0;
+    fread(&type, sizeof(char), 1, fp);
+    switch (type)
+    {
+    case 'I':
+    {
+      int data = 0;
+      fread(&data, sizeof(int), 1, fp);
+      printf("int : %d\n", data);
+    }
+    break;
+    case 'D':
+    {
+      double data = 0;
+      fread(&data, sizeof(double), 1, fp);
+      printf("double : %g\n", data);
+    }
+    break;
+    case 'S':
+    {
+      char buf[1024] = { 0 };
+      int slen = 0;
+      fread(&slen, sizeof(int), 1, fp);
+      fread(buf, slen, 1, fp);
+      printf("string : %s\n", buf);
+    }
+    break;
+    }
+  }
+  fclose(fp);
+}
+
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("mydata.txt", "wb");
+  {
+    char type = 'I';
+    int data = 100;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&data, sizeof(int), 1, fp);
+  }
+  {
+    char type = 'D';
+    double data = 3.1415;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&data, sizeof(double), 1, fp);
+  }
+  {
+    char type = 'S';
+    const char* data = "Hello";
+    int slen = strlen(data) + 1;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&slen, sizeof(int), 1, fp);
+    fwrite(data, slen, 1, fp);
+  }
+  fclose(fp);
+
+  fp = fopen("mydata.txt", "rb");
+  {
+    char type = 0;
+    fread(&type, sizeof(char), 1, fp);
+    switch (type)
+    {
+    case 'I':
+    {
+      int data = 0;
+      fread(&data, sizeof(int), 1, fp);
+      printf("int : %d\n", data);
+    }
+      break;
+    case 'D':
+    {
+      double data = 0;
+      fread(&data, sizeof(double), 1, fp);
+      printf("double : %g\n", data);
+    }
+      break;
+    case 'S':
+    {
+      char buf[1024] = { 0 };
+      int slen = 0;
+      fread(&slen, sizeof(int), 1, fp);
+      fread(buf, slen, 1, fp);
+      printf("string : %s\n", buf);
+    }
+      break;
+    }
+  }
+  fclose(fp);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("mydata.txt", "wb");
+  {
+    char type = 'I';
+    int data = 12345678;
+    fwrite(&type, sizeof(char), 1, fp);
+    fwrite(&data, sizeof(int), 1, fp);
+  }
+  fclose(fp);
+
+  fp = fopen("mydata.txt", "rb");
+  {
+    char type = 0;
+    int data = 0;
+    fread(&type, sizeof(char), 1, fp);
+    fread(&data, sizeof(int), 1, fp);
+    printf("data : %d\n", data);
+  }
+  fclose(fp);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("c:\\temp\\mydata_a.txt", "wb");
+  {
+    int data = 12345678;
+    fwrite(&data, 4, 1, fp);
+  }
+  fclose(fp);
+
+  fp = fopen("c:\\temp\\mydata_a.txt", "rb");
+  {
+    int data = 0;
+    fread(&data, 4, 1, fp);
+    printf("data : %d\n", data);
+  }
+  fclose(fp);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("..\\mydata_p.txt", "wb");
+  {
+    int data = 12345678;
+    fwrite(&data, 4, 1, fp);
+  }
+  fclose(fp);
+
+  fp = fopen("..\\mydata_p.txt", "rb");
+  {
+    int data = 0;
+    fread(&data, 4, 1, fp);
+    printf("data : %d\n", data);
+  }
+  fclose(fp);
+}
+
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("mydata.txt", "wb");
+  {
+    int data = 12345678;
+    fwrite(&data, 4, 1, fp);
+  }
+  fclose(fp);
+
+  fp = fopen("mydata.txt", "rb");
+  {
+    int data = 0;
+    fread(&data, 4, 1, fp);
+    printf("data : %d\n", data);
+  }
+  fclose(fp);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("mydata.txt", "wb");
+  {
+    int data = 12345678;
+    fwrite(&data, 4, 1, fp);
+  }
+  fclose(fp);
+}
+
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("mydata.txt", "wt");
+  {
+    int data = 100;
+    fprintf(fp, "%d", data);
+  }
+  fclose(fp);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  int arr[10] = { 20,30,40,511,610,1110,20,30,40,90 };
+
+  FILE* fp = NULL;
+  fp = fopen("mydata.txt", "wt");
+  
+  for (int i = 0; i < 10; ++i)
+    fprintf(fp, "arr[%d]:%d\n", i, arr[i]);
+
+  fclose(fp);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("mydata.txt", "wt");
+  fprintf(fp, "%d %g %s\n", 100, 3.14, "Hello");
+  fclose(fp);
+
+  FILE* fpRead = NULL;
+  fpRead = fopen("mydata.txt", "rt");
+  int n;
+  double d;
+  char buf[1024];
+  fscanf(fpRead, "%d %lf %s", &n, &d, buf);
+  fclose(fpRead);
+
+  printf("data : %d %g %s\n", n, d, buf);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  FILE* fp = NULL;
+  fp = fopen("mydata.txt", "wt");
+  fprintf(fp, "%d %g %s\n", 100, 3.14, "Hello");
+  fclose(fp);
+
+  FILE* fpRead = NULL;
+  fpRead = fopen("mydata.txt", "rt");
+  int n;
+  double d;
+  char buf[1024];
+  fscanf(fpRead, "%d %lf %s", &n, &d, buf);
+  fclose(fpRead);
+
+  printf("data : %d %g %s\n", n, d, buf);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  FILE* fp = NULL;
+
+  fp = fopen("mydata.txt", "wt");
+
+  printf("data hello~ : %d\n", 101);
+  fprintf(stdout, "data hello~ : %d\n", 102);
+  fprintf(fp, "data hello~ : %d\n", 103);
+
+  fclose(fp);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  FILE* fp = NULL;
+
+  fp = fopen("mydata.txt", "wt");
+
+  fprintf(fp, "data hello~ : %d\n", 101);
+  fprintf(fp, "data hello~ : %d\n", 102);
+  fprintf(fp, "data hello~ : %d\n", 103);
+
+  fclose(fp);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  FILE* fp = NULL;
+
+  fp = fopen("mydata.txt", "wt"); //1. 파일열기
+
+  fprintf(fp, "data hello~ : %d\n", 102); //2. 파일 R/W
+
+  fclose(fp); //3. 파일 닫기
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+int main()
+{
+  FILE* fp = NULL;
+
+  fp = fopen("mydata.txt", "wt"); //1. 파일열기
+
+  fprintf(fp, "data hello~ : %d\n", 102); //2. 파일 R/W
+
+  fclose(fp); //3. 파일 닫기
+}
