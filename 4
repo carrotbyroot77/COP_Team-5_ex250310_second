@@ -1,0 +1,504 @@
+#include <stdio.h>
+struct Person
+{
+  char name[20];
+  int age;
+};
+void PrintPerson(Person* p)
+{
+  printf("name:%s, age:%d\n", p->name, p->age);
+}
+int main()
+{
+  Person p1 = { "홍길동", 30 };
+  Person p2 = { "Hong Gil-Dong", 30 };
+
+  PrintPerson(&p1);
+  PrintPerson(&p2);
+}
+
+#include <stdio.h>
+struct Person
+{
+  char name[20];
+  int age;
+};
+int main()
+{
+  Person p1 = { "홍길동", 30 };
+  Person p2 = { "Hong Gil-Dong", 30 };
+
+  printf("name:%s, age:%d\n", p1.name, p1.age);
+  printf("name:%s, age:%d\n", p2.name, p2.age);
+  printf("%c\n", p2.name[3]);
+}
+
+#include <stdio.h>
+struct Person
+{
+  char name[20];
+  int age;
+};
+int main()
+{
+  Person p1 = { "홍길동", 30 };
+
+  printf("name:%s, age:%d\n", p1.name, p1.age);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+int main()
+{
+  char* sarr[1000] = { 0 };
+  int count = 0;
+  int run = 1;
+
+  while (run)
+  {
+    char buf[1000];
+
+    printf("문자열 입력: ");
+    gets_s(buf, 1000);
+    if (strcmp("exit", buf) == 0)
+      run = 0;
+    else
+    {
+      printf("string : %s\n", buf);
+      char* s = (char*)malloc(strlen(buf) + 1);
+      strcpy(s, buf);
+      sarr[count++] = s;
+    }
+    ////
+  }
+
+  for (int i = 0; i < count; ++i)
+    printf("[%d] : %s\n", i, sarr[i]);
+
+  for (int i = 0; i < count; ++i)
+    free(sarr[0]);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+//쪽지시험
+int main()
+{
+  char* sarr[1000] = { 0 };
+  int count = 0;
+
+  while (1)
+  {
+    char buf[1000];
+
+    printf("문자열 입력: ");
+    gets_s(buf, 1000);
+    if (strcmp("exit", buf) == 0)
+      break;
+
+    printf("string : %s\n", buf);
+    char* s = (char*)malloc(strlen(buf) + 1);
+    strcpy(s, buf);
+    sarr[count++] = s;
+  }
+
+  for (int i = 0; i < count; ++i)
+    printf("[%d] : %s\n", i, sarr[i]);
+
+  for (int i = 0; i < count; ++i)
+    free(sarr[0]);
+}
+
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+int main()
+{
+  char* sarr[1000] = { 0 };
+  int count = 0;
+
+  while (1)
+  {
+    char buf[1000];
+
+    printf("문자열 입력: ");
+    gets_s(buf, 1000);
+    if (strcmp("exit", buf) == 0)
+      break;
+
+    printf("string : %s\n", buf);
+    char* s = (char*)malloc(strlen(buf) + 1);
+    strcpy(s, buf);
+    sarr[count++] = s;
+  }
+
+  for (int i = 0; i < count; ++i)
+    printf("[%d] : %s\n", i, sarr[i]);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  char* sarr[1000]={ 0 };
+  int count=0;
+
+  while (1)
+  {
+    char buf[1000];
+
+    printf("문자열 입력: ");
+    gets_s(buf, 1000);
+    if (strcmp("exit", buf) == 0)
+      break;
+
+    printf("string : %s\n", buf);
+    sarr[count++] = buf;
+  }
+
+  for (int i = 0; i < count; ++i)
+    printf("[%d] : %s\n", i, sarr[i]);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  while (1)
+  {
+    char buf[1000];
+
+    printf("문자열 입력: ");
+    gets_s(buf, 1000);
+    if (strcmp("exit", buf) == 0 )
+      break;
+
+    printf("string : %s\n", buf);
+  }
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  while (1)
+  {
+    char buf[1000];
+
+    printf("문자열 입력: ");
+    gets_s(buf, 1000);
+    if (buf[0] == "exit"[0]&&
+      buf[1] == "exit"[1] &&
+      buf[2] == "exit"[2] &&
+      buf[3] == "exit"[3] &&
+      buf[4] == "exit"[4] )
+      break;
+
+    printf("string : %s\n", buf);
+  }
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  char buf[1000];
+
+  printf("문자열 입력: ");
+  gets_s(buf, 1000);
+
+  printf("string : %s\n", buf);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  //strcpy(), strcat(), strcmp(), strlen()
+  char buf[10] = "abcdef";
+  const char* s = "ABC";
+
+  printf("%d\n", strlen(buf) );
+  printf("%d\n", strlen(s) );
+  printf("%d\n", strlen("hello~"));
+}
+
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  //strcpy(), strcat(), strcmp(), strlen()
+  char buf[10] = "abc";
+  const char* s = "ABC";
+
+  printf("%d\n", strcmp(buf, s));
+  printf("%d\n", strcmp(s, buf));
+  printf("%d\n", strcmp("abc", buf));
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  //strcpy(), strcat(), strcmp(), strlen()
+  char buf[10]="abc";
+  const char* s = "ABC";
+
+  strcat(buf, s);
+
+  printf("%s %s\n", buf, s);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  //strcpy(), strcat(), strcmp(), strlen()
+  char buf[10];
+  const char* s = "ABC";
+
+  strcpy(buf, s);
+  buf[0] = 'A';
+
+  printf("%s %s\n", buf, s);
+}
+
+//#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  //strcpy(), strcat(), strcmp(), strlen()
+  char buf[10];
+  const char* s = "ABC";
+
+  //buf[0] = s[0];
+  //buf[1] = s[1];
+  //buf[2] = s[2];
+  //buf[3] = s[3];
+  //strcpy(buf, s);
+  strcpy_s(buf,1000, s);
+  buf[0] = 'A';
+
+  printf("%s %s\n", buf, s);
+}
+
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  //strcpy(), strcat(), strcmp(), strlen()
+  char buf[10];
+  const char* s = "ABC";
+
+  //buf[0] = s[0];
+  //buf[1] = s[1];
+  //buf[2] = s[2];
+  //buf[3] = s[3];
+  //strcpy(buf, s);
+  strcpy(buf+1, s);
+  buf[0] = 'A';
+
+  printf("%s %s\n", buf, s);
+}
+
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  char buf[1000];
+  
+  printf("문자열 입력: ");
+  gets_s(buf, 1000);
+
+  printf("string: %s\n", buf);
+}
+
+#include <stdio.h>
+int main()
+{
+  char* s1 = NULL;
+  const char* s2 = NULL;
+
+  s1 = "ABC";
+  s2 = "ABC";
+}
+
+#include <stdio.h>
+int main()
+{
+  char* s1 = NULL;
+  const char* s2 = NULL;
+
+  char buf[10] = "ABC";
+
+  s1 = buf;
+  s2 = buf;
+
+  s1[0] = 'Z';
+  s2[0] = 'Z';
+}
+
+#include <stdio.h>
+int main()
+{
+  char* s1 = NULL;
+  const char* s2 = NULL;
+
+  char c = 'A';
+
+  s1 = &c;
+  s2 = &c;
+
+  *s1 = 'Z';
+  *s2 = 'Z';
+  printf("%c %c %c\n", *s1, *s2, c);
+}
+
+#include <stdio.h>
+int main()
+{
+  char s1[10] = "ABC";
+  const char* s2 = "ABC";
+
+  printf("%s %s\n", s1, s2);
+
+}
+
+
+#include <stdio.h>
+struct Point
+{
+  int x;
+  int y;
+};
+int main()
+{
+  Point pt = { 1,2 };
+  Point pt2 = { 3,5 };
+
+  Point* p = &pt;
+  printf("%d, %d\n", p->x, p->y);
+  printf("%d, %d\n", pt.x, pt.y);
+  p = &pt2;
+  printf("%d, %d\n", p->x, p->y);
+  printf("%d, %d\n", pt2.x, pt2.y);
+}
+
+#include <stdio.h>
+struct Point
+{
+  int x;
+  int y;
+};
+void PrintPoint(Point* p)
+{
+  printf("(%d, %d)\n", p->x, p->y);
+}
+void SetPoint(Point* p, int x, int y)
+{
+  p->x = x;
+  p->y = y;
+}
+void ResetPoint(Point* p)
+{
+  p->x = p->y = 0;
+}
+int main()
+{
+  Point pt = { 1,2 };
+
+  PrintPoint(&pt);
+  SetPoint(&pt, 4, 5);
+  PrintPoint(&pt);
+  ResetPoint(&pt);
+  PrintPoint(&pt); //(0, 0)
+}
+
+#include <stdio.h>
+struct Point
+{
+  int x;
+  int y;
+};
+void PrintPoint(Point* p)
+{
+  printf("(%d, %d)\n", p->x, p->y);
+}
+void SetPoint(Point* p, int x, int y)
+{
+  p->x = x;
+  p->y = y;
+}
+void ResetPoint(Point* p)
+{
+  p->x = p->y = 0;
+}
+int main()
+{
+  Point pt = { 1,2 };
+
+  PrintPoint(&pt);
+  SetPoint(&pt, 4, 5);
+  PrintPoint(&pt);
+  ResetPoint(&pt);
+  PrintPoint(&pt); //(0, 0)
+}
+
+#include <stdio.h>
+struct Point
+{
+  int x;
+  int y;
+};
+void PrintPoint(Point* p)
+{
+  printf("(%d, %d)\n", p->x, p->y);
+}
+void SetPoint(Point* p, int x, int y)
+{
+  p->x = x;
+  p->y = y;
+}
+int main()
+{
+  Point pt = { 1,2 };
+
+  PrintPoint(&pt);
+  SetPoint(&pt, 4, 5);
+  PrintPoint(&pt);
+  PrintPoint(&pt);
+}
+
+#include <stdio.h>
+struct Point
+{
+  int x;
+  int y;
+};
+void PrintPoint(Point* p)
+{
+  printf("(%d, %d)\n", p->x, p->y);
+}
+int main()
+{
+  Point pt = { 1,2 };
+
+  PrintPoint(&pt); //(1,2)
+}
