@@ -1,0 +1,220 @@
+#include <stdio.h>
+void PrintStringToAscii(char* s1)
+{
+  for (int i = 0; s1[i] != '\0'; ++i)
+    printf("%c : %d\n", s1[i], s1[i]);
+  printf("\n");
+}
+int main()
+{
+  char* s1 = "ABCDEF";
+
+  PrintStringToAscii("ABC");
+  PrintStringToAscii(s1);
+  PrintStringToAscii("Hello");
+}
+
+#include <stdio.h>
+int main()
+{
+  char* s1 = "ABCDEF";
+
+  for (int i = 0; s1[i] != '\0'; ++i)
+    printf("%c : %d\n", s1[i], s1[i]);
+}
+
+#include <stdio.h>
+int main()
+{
+  char* s1 = "ABC";
+
+  for(int i = 0 ; i < 3 ; ++i)
+    printf("%c : %d\n", s1[i], s1[i]);
+}
+
+#include <stdio.h>
+int main()
+{
+  char* s1 = "ABC";
+
+  printf("%c : %d\n", s1[0], s1[0]);
+  printf("%c : %d\n", s1[1], s1[1]);
+  printf("%c : %d\n", s1[2], s1[2]);
+}
+
+
+#include <stdio.h>
+int main()
+{
+  char* s1 = "ABC";
+  char* s2 = "Hello";
+
+  printf("%s %s\n", s1, s2);
+  printf("%c %d\n", s1[0], s2[0]);
+  printf("%c %d\n", s1[1], s2[1]);
+  printf("%c %d\n", s1[2], s2[2]);
+}
+
+#include <stdio.h>
+int main()
+{
+  char* s1 = "ABC";
+  char* s2 = "Hello";
+
+  printf("%s %s\n", s1, s2);
+}
+
+#include <stdio.h>
+int main()
+{
+  printf("%s %s\n", "ABC", "Hello");
+  printf("%s %s\n", "ABC"+1, "Hello"+1);
+  printf("%p %p\n", "ABC", "Hello");
+  printf("%p %p\n", "ABC"+1, "Hello"+1);
+}
+
+#include <stdio.h>
+int main()
+{
+  char* s = "ABC";
+
+  printf("%c %c\n", s[0], "ABC"[0]);
+  printf("%c %c\n", *(s+0), *("ABC"+0));
+  printf("%s %s\n", s, "ABC");
+  printf("%s %s\n", s+1, "ABC"+1);
+  printf("%p %p\n", s, "ABC");
+}
+
+#include <stdio.h>
+int main()
+{
+  char* s = "ABC";
+
+  printf("%p, %p\n", s, s+1);
+  printf("%s, %s\n", s, s+1);
+}
+
+#include <stdio.h>
+int main()
+{
+  char* s = "ABC";
+  char arr[4] = "ABC";
+
+  printf("%p, %p\n", s, &arr[0]);
+  printf("%s, %s\n", s, &arr[0]);
+}
+
+#include <stdio.h>
+int main()
+{
+  int n1 = 65;
+  int n2 = 'A';
+
+  printf("%d %d\n", n1, n2);
+  printf("%c %c\n", n1, n2);
+}
+
+#include <stdio.h>
+int main()
+{
+  int n1 = 65;
+  int n2 = 'A';
+
+  printf("%d %d\n", n1, n2);
+  printf("%c %c\n", n1, n2);
+}
+
+#include <stdio.h>
+int main()
+{
+  int n = 65;
+
+  printf("%c %d\n", n, n);
+  printf("%c %d\n", 65, 65);
+  printf("%c %d\n", 'A', 'A');
+}
+
+#include <stdio.h>
+int main()
+{
+  double da[4] = { 1.1, 2.2, 3.3, 4.4 };
+  double* pd = &da[1];
+
+  printf("%g %g\n", da[1], pd[0]);
+  printf("%g %g\n", da[2], pd[1]);
+  printf("%g %g\n", da[0], pd[-1]);
+}
+
+#include <stdio.h>
+int main()
+{
+  int arr[2] = { 100, 200 };
+  int* p = &arr[0];
+
+  printf("%d %d\n", arr[0], arr[1]);
+  printf("%d %d\n", p[0], p[1]);
+}
+
+#include <stdio.h>
+int main()
+{
+  int arr[2] = { 100, 200 };
+  int* p = &arr[0];
+
+  printf("%p %d", p, *(p + 0));
+  printf("%p %d", p + 1, *(p + 1));
+  printf("%p %d", p, p[0]);
+  printf("%p %d", p + 1, p[1]);
+}
+
+#include <stdio.h>
+int main()
+{
+  int arr[2] = { 100, 200 };
+  int* p = &arr[0];
+
+  printf("%p %d", p, *(p+0));
+  printf("%p %d", p+1, *(p+1));
+}
+
+#include <stdio.h>
+int main()
+{
+  int n = 10;
+  int* p = &n;
+
+  printf("%d %d\n", *&n, *p);
+  printf("%d %d\n", *(&n + 1), *(p + 1));
+}
+
+#include <stdio.h>
+int main()
+{
+  int n = 10;
+  int* p = &n;
+
+  printf("%p %p\n", &n, p);
+  printf("%p %p\n", &n + 1, p + 1);
+  printf("%p %p\n", &n+2, p+2);
+}
+
+#include <stdio.h>
+int main()
+{
+  char arr[3] = { 10,20,30 };
+  double darr[4] = { 10.1,20.2,30.3,40.4 };
+  char* pc = &arr[0];
+  double* pd = &darr[0];
+
+}
+
+#include <stdio.h>
+int main()
+{
+  int n = 10;
+  int n2 = n;
+  int* p = &n;
+  int* p2 = p;
+
+
+}
