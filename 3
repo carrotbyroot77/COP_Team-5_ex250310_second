@@ -1,0 +1,392 @@
+#include <stdio.h>
+struct Point
+{
+  int x;
+  int y;
+};
+void PrintPoint(Point* p)
+{
+  printf("(%d, %d)\n", p->x, p->y);
+}
+int main()
+{
+  Point pt = { 2,3 };
+  Point pt2 = { -1, 3 };
+
+  PrintPoint(&pt);
+  PrintPoint(&pt2);
+}
+
+#include <stdio.h>
+struct Point
+{
+  int x;
+  int y;
+};
+void PrintPoint(Point pt)
+{
+  printf("(%d, %d)\n", pt.x, pt.y);
+}
+int main()
+{
+  Point pt = { 2,3 };
+  Point pt2 = { -1, 3 };
+
+  PrintPoint(pt);
+  PrintPoint(pt2);
+}
+
+#include <stdio.h>
+struct Point
+{
+  int x;
+  int y;
+};
+void PrintPoint(Point pt)
+{
+  printf("(%d, %d)\n", pt.x, pt.y);
+}
+int main()
+{
+  Point pt = { 2,3 };
+
+  PrintPoint(pt);
+}
+
+#include <stdio.h>
+struct Point
+{
+  int x;
+  int y;
+};
+int main()
+{
+  Point pt = { 2,3 };
+  Point* p = &pt;
+  printf("(%d, %d)\n", pt.x, (&pt)->y);
+  printf("(%d, %d)\n", (*p).x, p->y);
+}
+
+#include <stdio.h>
+struct Point
+{
+  int x;
+  int y;
+};
+int main()
+{
+  Point pt = { 2,3 };
+  Point* p = &pt;
+  printf("(%d, %d)\n", pt.x, pt.y);
+  printf("(%d, %d)\n", p->x, p->y);
+}
+
+#include <stdio.h>
+struct Point
+{
+  int x;
+  int y;
+};
+int main()
+{
+  Point pt = { 2,3 };
+  printf("(%d, %d)\n", pt.x, pt.y);
+
+  printf("%p %p\n", &pt, &pt+1);
+  printf("%p %p\n", &pt.x, &pt.x+1);
+
+  Point* p1 = &pt;
+  int* p2 = &pt.x;
+}
+
+#include <stdio.h>
+struct Point
+{
+  int x;
+  int y;
+};
+int main()
+{
+  int n = 10;
+  Point pt = { 2,3 };
+
+  printf("%d\n", n);
+  printf("(%d, %d)\n", pt.x, pt.y);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+typedef int I;
+typedef int* PI;
+
+void AssignAddress(PI* pp, I* pdata)
+{
+  *pp = pdata;
+}
+int main()
+{
+  I a = 10;
+  I b = 20;
+  PI p = NULL;
+
+  //p = &a;
+  //p = &b;
+  AssignAddress(&p, &b);
+
+  printf("data : %d\n", *p);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+void AssignAddress(int** pp,int* pdata)
+{
+  *pp = pdata;
+}
+int main()
+{
+  int a = 10;
+  int b = 20;
+  int* p = NULL;
+
+  //p = &a;
+  //p = &b;
+  AssignAddress(&p, &b);
+
+  printf("data : %d\n", *p);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+  int a = 10;
+  int b = 20;
+  int* p = NULL;
+
+  //p = &a;
+  p = &b;
+
+  printf("data : %d\n", *p);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+void AllocIntArray(int** pp, int capacity)
+{
+  *pp = (int*)malloc(sizeof(int) * capacity);
+}
+void InitIntArray(int* pa, int size)
+{
+  for (int i = 0; i < size; ++i)
+    pa[i] = i + 1;
+}
+void PrintIntArray(int* pa, int size)
+{
+  for (int i = 0; i < size; ++i)
+    printf("data : %d\n", pa[i]);
+}
+void FreeIntArray(int* pa)
+{
+  free(pa);
+}
+int main()
+{
+  int* pa = 0;
+  
+  AllocIntArray(&pa, 10);
+  InitIntArray(pa, 10);
+  PrintIntArray(pa, 10);
+  FreeIntArray(pa);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+int* AllocIntArray(int capacity)
+{
+  return (int*)malloc(sizeof(int) * capacity);
+}
+void InitIntArray(int* pa, int size)
+{
+  for (int i = 0; i < size; ++i)
+    pa[i] = i + 1;
+}
+void PrintIntArray(int* pa, int size)
+{
+  for (int i = 0; i < size; ++i)
+    printf("data : %d\n", pa[i]);
+}
+void FreeIntArray(int* pa) 
+{
+  free(pa);
+}
+int main()
+{
+  int* pa = AllocIntArray(10);
+  InitIntArray(pa, 10);
+  PrintIntArray(pa, 10);
+  FreeIntArray(pa);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+  int* pa = (int*)malloc(sizeof(int) * 10);
+
+  for (int i = 0; i < 10; ++i)
+    pa[i] = i + 1;
+
+  for (int i = 0; i < 10; ++i)
+    printf("data : %d\n", pa[i]);
+
+  free(pa);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int* AllocInt()
+{
+  return  (int*)malloc(sizeof(int));
+}
+double* AllocDouble()
+{
+  return (double*)malloc(sizeof(double));
+}
+void SetInt(int* p, int data)
+{
+  *p = data;
+}
+void SetDouble(double* p, double data)
+{
+  *p = data;
+}
+void PrintInt(int data)
+{
+  printf("int : %d\n", data);
+}
+void PrintDouble(double data)
+{
+  printf("double : %g\n", data);
+}
+void FreeInt(int* p)
+{
+  free(p);
+}
+void FreeDouble(double* p)
+{
+  free(p);
+}
+int main()
+{
+  int* pa = NULL;
+  double* pb = NULL;
+
+  pa = AllocInt();
+  pb = AllocDouble();
+
+  SetInt(pa, 10);//SetInt(&*pa, 10);
+  SetDouble(pb, 3.14);
+
+  PrintInt(*pa);
+  PrintDouble(*pb);
+
+  FreeInt(pa);
+  FreeDouble(pb);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int* AllocInt()
+{
+  return  (int*)malloc(sizeof(int));
+}
+double* AllocDouble()
+{
+  return (double*)malloc(sizeof(double));
+}
+void SetInt(int* p, int data)
+{
+  *p = data;
+}
+void SetDouble(double* p, double data)
+{
+  *p = data;
+}
+void PrintInt(int data)
+{
+  printf("int : %d\n", data);
+}
+void PrintDouble(double data)
+{
+  printf("double : %g\n", data);
+}
+void FreeInt(int* p)
+{
+  free(p);
+}
+void FreeDouble(double* p)
+{
+  free(p);
+}
+int main()
+{
+  int* pa = NULL;
+  double* pb = NULL;
+
+  pa = AllocInt();
+  pb = AllocDouble();
+
+  SetInt(pa, 10);//SetInt(&*pa, 10);
+  SetDouble(pb, 3.14);
+
+  PrintInt(*pa);
+  PrintDouble(*pb);
+
+  FreeInt(pa);
+  FreeDouble(pb);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+  int* pa = NULL;
+  double* pb = NULL;
+  // CRUD(Create, Read, Update, Delete)
+
+  pa = (int*)malloc(sizeof(int));
+  pb = (double*)malloc(sizeof(double));
+
+  *pa = 10;
+  *pb = 3.14;
+  printf("int : %d\n", *pa);
+  printf("double : %g\n", *pb);
+
+  free(pa);
+  free(pb);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+  int* pa = NULL;
+  double* pb = NULL;
+
+  pa = (int*)malloc(sizeof(int));
+  pb = (double*)malloc(sizeof(double));
+
+  *pa = 10;
+  *pb = 3.14;
+  printf("int : %d\n", *pa);
+  printf("double : %g\n", *pb);
+
+  free(pa);
+  free(pb);
+}
